@@ -37,39 +37,49 @@
 <html>
     <body style="background-color:#0e407f;"></body>   
     <h1 id="text">Top 81822951727007604531089510874873678094620897430789640678941608973407896089431608435143514366143986348790563480795134089754307896340879630789631086794360789348096534876954689450647564590354670985476055089775408627849341075346879347890210896070087828070438795207880718709423187436810793089578234230789098734608944705857124389517243809308916706628943670489015704543574589052347104398674360894230674370894613460890842247089647096313468964378061430719430172894804308641089308950890896713807941408430867940689436143643064361483003849431078914078910892234061235671253520687540281428198079341508791087914308154658421892612389610679505089460108964480954708925452... cheese</h1>
-    <img id = "cheese" src="file:///home/halfsine/top-1-million-cheese/newCheese/.jpg" width="100%" height="100%" style="visibility: hidden;">
-    <button onclick="playMusic">music</button>
+    <img id = "cheese" width="100%" height="100%" style="visibility: hidden;">
+    <button value="music" onclick="playMusic()">music</button>
 </html>
 
 <script>
     setTimeout(function(){displayCheese();}, 5000);
-    var dir = "file:///home/halfsine/top-1-million-cheese/newCheese/";
-    var extension = ".jpg";
+    var dir = 'newCheese/';
+    var extension = '.jpg';
 
-    var listIndex = 1;
+    var listIndex = 0;
 
-    var music = new Audio('file:///home/halfsine/top-1-million-cheese/2007.mp3')
+    var music = new Audio('2007.mp3')
+    var playing = false
+    music.load();
+    music.loop = true;
 
     function displayCheese()
     {
-        document.getElementById("cheese").src = dir + listIndex + extension;
-        console.log(document.getElementById("cheese").src)
         document.getElementById("cheese").style.visibility = "hidden";
         document.getElementById("text").textContent = "Number 81822951727007604531089510874873678094620897430789640678941608973407896089431608435143514366143986348790563480795134089754307896340879630789631086794360789348096534876954689450647564590354670985476055089775408627849341075346879347890210896070087828070438795207880718709423187436810793089578234230789098734608944705857124389517243809308916706628943670489015704543574589052347104398674360894230674370894613460890842247089647096313468964378061430719430172894804308641089308950890896713807941408430867940689436143643064361483003849431078914078910892234061235671253520687540281428198079341508791087914308154658421892612389610679505089460108964480954708925452...";
         setTimeout(function(){
-            document.getElementById("cheese").style.visibility = "visible";
-            setTimeout(function(){displayCheese();}, 3000);
             listIndex++;
             if (listIndex > 427)
             {
                 listIndex = 1;
             }
+            document.getElementById("cheese").src = dir + listIndex + extension;
+            document.getElementById("cheese").style.visibility = "visible";
+            setTimeout(function(){displayCheese();}, 3000);
         }, 3000);
     }
 
     function playMusic()
     {
-        music.load();
-        music.play();
+        if (!playing)
+        {
+            music.play();
+            playing = true;
+        }
+        else
+        {
+            music.pause();
+            playing = false;
+        }
     }
 </script>

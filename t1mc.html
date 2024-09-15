@@ -48,6 +48,8 @@
 
     var listIndex = 1;
 
+    var music = new Audio('file:///home/halfsine/top-1-million-cheese/2007.mp3')
+
     function displayCheese()
     {
         document.getElementById("cheese").src = dir + listIndex + extension;
@@ -67,7 +69,7 @@
 
     function playMusic()
     {
-        var music = new Audio('2007.mp3');
+        music.load();
         music.play();
     }
 </script>
